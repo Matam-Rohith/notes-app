@@ -18,20 +18,20 @@ export default function Home() {
   }, []);
 
   async function fetchNotes() {
-    const res = await fetch("http://localhost:5000/api/notes");
+    const res = await fetch("https://notes-app-1-arh1.onrender.com/api/notes");
     const data = await res.json();
     setNotes(data);
   }
 
   async function saveNote() {
     if (editId === null) {
-      await fetch("http://localhost:5000/api/notes", {
+      await fetch("https://notes-app-1-arh1.onrender.com/api/notes", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content })
       });
     } else {
-      await fetch(`http://localhost:5000/api/notes/${editId}`, {
+      await fetch(`https://notes-app-1-arh1.onrender.com/api/notes/${editId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ title, content })
@@ -51,7 +51,7 @@ export default function Home() {
   }
 
   async function deleteNote(id: number) {
-    await fetch(`http://localhost:5000/api/notes/${id}`, {
+    await fetch(`https://notes-app-1-arh1.onrender.com/api/notes/${id}`, {
       method: "DELETE"
     });
     fetchNotes();
